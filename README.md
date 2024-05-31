@@ -81,7 +81,7 @@ display(system)
 display(results)
 ```
 
-![Pop Model](Week_3/figs/chap07-fig01.pdf)
+![Pop Model](Week_3/figs/chap07-fig01.png)
 
 
 ### Projections of Population
