@@ -143,3 +143,110 @@ plot_results(census,un, results, "Comparison")
 ```
 ![Pop Project](Week_4/figs/chap08_project.png)
 ![Pop Growth Rate](Week_4/figs/chap08_growth_rate.png)
+
+
+## Infection Rates Among Students
+ This simulation introduces a model based on infection rates of college students using an SIR model. It also allows us to simulate the impacts of immunization.
+ 
+ S - # of Susceptible Students = 89
+ I - # of Infected Students = 1
+ R - # of Recovered Students = 0
+
+tc - Contact Rate = 3 days
+tr - Recovery Rate = 4 days
+
+
+```
+def make_system(beta, gamma):
+    """Make a system object for the SIR model.
+    
+    beta: contact rate in days
+    gamma: recovery rate in days
+    
+    returns: System object
+    """
+    init = State(S=89, I=1, R=0)
+    init /= sum(init)
+
+    t0 = 0
+    t_end = 7 * 14 #(days in a standard semester)
+
+    return System(init=init, t0=t0, t_end=t_end,
+                  beta=beta, gamma=gamma)
+
+# Initializing parameters
+
+tc = 3      # time between contacts in days 
+tr = 4      # recovery time in days
+
+beta = 1 / tc      # contact rate in per day
+gamma = 1 / tr     # recovery rate in per day
+
+system = make_system(beta, gamma)
+
+# Establish the Update Function
+
+def update_func(state, t, system):
+    """Update the SIR model.
+    
+    state: State with variables S, I, R
+    t: time step
+    system: System with beta and gamma
+    
+    returns: State object
+    """
+    s, i, r = state
+
+    infected = system.beta * i * s    
+    recovered = system.gamma * i
+    
+    s -= infected
+    i += infected - recovered
+    r += recovered
+    
+    return State(S=s, I=i, R=r)
+
+# Run Simulation Function
+
+def run_simulation(system, update_func):
+    """Runs a simulation of the system.
+    
+    Add three Series objects to the System: S, I, R
+    
+    system: System object
+    update_func: function that updates state
+    """
+    S = TimeSeries()
+    I = TimeSeries()
+    R = TimeSeries()
+
+    state = system.init
+    t0 = system.t0
+    S[t0], I[t0], R[t0] = state
+    
+    for t in linrange(system.t0, system.t_end):
+        state = update_func(state, t, system)
+        S[t+1], I[t+1], R[t+1] = state
+    
+    return S, I, R
+
+# Running Simulation
+S, I, R = run_simulation(system, update_func)
+
+# Plotting Results
+
+def plot_results(S, I, R):
+    """Plot the results of a SIR model.
+    
+    S: TimeSeries
+    I: TimeSeries
+    R: TimeSeries
+    """
+    plot(S, '--', label='Susceptible')
+    plot(I, '-', label='Infected')
+    plot(R, ':', label='Recovered')
+    decorate(xlabel='Time (days)',
+             ylabel='Fraction of population')
+plot_results(S, I, R)
+
+![SIR Sim](Week_11/figs/chap11-fig01.png)
