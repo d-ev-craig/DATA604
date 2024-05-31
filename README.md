@@ -248,6 +248,7 @@ def plot_results(S, I, R):
     decorate(xlabel='Time (days)',
              ylabel='Fraction of population')
 plot_results(S, I, R)
+```
 
 ![SIR Sim](Week_11/figs/chap11-fig01.png
 
@@ -270,6 +271,38 @@ add_immunization(system2, 0.1)
 results2 = run_simulation(system2, update_func)
 calc_total_infected(results2
 ```
+
 ![Immunization](Week_5/figs/chap12-fig01.png)
 
+Then we can see the impacts on infection rates pending immunization rates to identify the most effective immunization.
 
+```
+def sweep_immunity(immunize_array):
+    """Sweeps a range of values for immunity.
+    
+    immunize_array: array of fraction immunized
+    
+    returns: Sweep object
+    """
+    sweep = SweepSeries()
+    
+    for fraction in immunize_array:
+        system = make_system(beta, gamma)
+        add_immunization(system, fraction)
+        results = run_simulation(system, update_func)
+        sweep[fraction] = calc_total_infected(results)
+        
+    return sweep
+
+immunize_array = linspace(0, 1, 21)
+infected_sweep = sweep_immunity(immunize_array)
+
+plot(infected_sweep)
+
+decorate(xlabel='Fraction immunized',
+         ylabel='Total fraction infected',
+         title='Fraction infected vs. immunization rate',
+         legend=False)
+```
+
+![Sweep Immune](Week_5/figs/chap12-fig02.png)
