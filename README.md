@@ -81,7 +81,7 @@ display(system)
 display(results)
 ```
 
-![Pop Model](Week 3/figs/chap07-fig01.pdf)
+![Pop Model](Week_3/figs/chap07-fig01.pdf)
 
 
 ### Projections of Population
@@ -141,5 +141,5 @@ def plot_results(census, un, timeseries, title):
     
 plot_results(census,un, results, "Comparison")
 ```
-![Pop Project](Week 4/figs/chap08_project.png)
-![Pop Growth Rate](Week 4/figs/chap08_growth_rate.png)
+![Pop Project](Week_4/figs/chap08_project.png)
+![Pop Growth Rate](Week_4/figs/chap08_growth_rate.png)
