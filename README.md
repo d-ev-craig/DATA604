@@ -1,5 +1,19 @@
 # DATA604
-This course was a focus on simulation and modeling techniques for real world scenarios. This course utilized modsim and touched on simpy.
+This course was a focus on simulation and modeling techniques for real world scenarios. This course utilized modsim and touched on sympy.
+
+The final for this course was to create a simulation to model the Loading and Shipping process for [Kioti](https://www.kioti.com/) (a tractor distribution company). The company's core process is loading tractors, attachments, and implements onto a truck for shipping. 
+
+The goal of the project was to involve each step of the process with varying amounts of time for each depending on issues. This would serve as a baseline to identify new complications to be added to the model and picking the number of teams to reduce the number of trucks that waited.
+
+One of the greatest factors in this process is the <b>arrival time of the truck</b>. 
+
+The simulation is ran with 2 teams and 3 teams, across a single day with 10, 15, 20, 25, and 30 trucks arriving at random times between 8am and 5pm.
+
+The process of receiving and truck, loading, and leaving the facility are all detailed in the slides.
+
+The main finding was that the number of teams and trucks in a day were less important than the arrival times of the trucks and highlights the need for the company to enforce some type of scheduling for trucking companies to avoid any detainment fees.
+
+
 
 
 ## Population Growth
