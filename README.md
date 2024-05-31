@@ -249,4 +249,27 @@ def plot_results(S, I, R):
              ylabel='Fraction of population')
 plot_results(S, I, R)
 
-![SIR Sim](Week_11/figs/chap11-fig01.png)
+![SIR Sim](Week_11/figs/chap11-fig01.png
+
+From here we can see the impacts of immunization by adding another component to the model.
+
+```
+def add_immunization(system, fraction):
+    """Immunize a fraction of the population.
+    
+    Moves the given fraction from S to R.
+    
+    system: System object
+    fraction: number from 0 to 1
+    """
+    system.init.S -= fraction
+    system.init.R += fraction
+
+system2 = make_system(beta, gamma)
+add_immunization(system2, 0.1)
+results2 = run_simulation(system2, update_func)
+calc_total_infected(results2
+```
+![Immunization](Week_5/figs/chap12-fig01.png)
+
+
