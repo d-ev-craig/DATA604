@@ -1,4 +1,4 @@
-# DATA604
+# DATA604 Simulation and Modeling
 This course was a focus on simulation and modeling techniques for real world scenarios. This course utilized modsim and touched on sympy.
 
 The final for this course was to create a simulation to model the Loading and Shipping process for [Kioti](https://www.kioti.com/) (a tractor distribution company). The company's core process is loading tractors, attachments, and implements onto a truck for shipping. 
