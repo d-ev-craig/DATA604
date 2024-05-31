@@ -13,7 +13,9 @@ The process of receiving and truck, loading, and leaving the facility are all de
 
 The main finding was that the number of teams and trucks in a day were less important than the arrival times of the trucks and highlights the need for the company to enforce some type of scheduling for trucking companies to avoid any detainment fees.
 
+![Final GIF](Final_Project/Shipping_Truck_Simulation.gif)
 
+The [PDF](Final_Project/Shipping_Truck_Simulation.pdf) of the slides can be seen by clicking the highlighted 'PDF' link.
 
 
 ## Population Growth
